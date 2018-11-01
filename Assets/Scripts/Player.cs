@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    private float m_health;
+    private int m_health;
     private bool m_isAlive;
     private bool m_canRegen;
-    private float m_maxHealth;
+    private int m_maxHealth;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
         m_maxHealth = 100;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         m_health -= damage;
 
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
         m_canRegen = true;
     }
 
-    public void RegenHealth(float newRegenHealth)
+    public void RegenHealth(int newRegenHealth)
     {
         m_health += newRegenHealth;
     }
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
         return m_health;
     }
 
-    public void SetHealth(float newHealth)
+    public void SetHealth(int newHealth)
     {
         m_health = newHealth;
     }
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
         return m_maxHealth;
     }
 
-    public void SetMaxHealth(float newMaxHealth)
+    public void SetMaxHealth(int newMaxHealth)
     {
         m_maxHealth = newMaxHealth;
     }

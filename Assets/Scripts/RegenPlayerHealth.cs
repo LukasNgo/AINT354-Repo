@@ -6,7 +6,7 @@ public class RegenPlayerHealth : MonoBehaviour {
 
     private Player m_player;
     private float regenTime = 5;
-    private float repeatRate = 1;
+    private float repeatRate = 0.5f;
 
     private void Start()
     {
