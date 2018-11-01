@@ -10,15 +10,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float m_walkSpeed;
     [SerializeField] private float m_runSpeed;
     [SerializeField] private float m_creepSpeed;
-    [SerializeField] private Camera m_camera;
 
     private Rigidbody m_rigidbody;
     private Vector3 m_inputs = Vector3.zero;
 
     void Start ()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         m_rigidbody = GetComponent<Rigidbody>();
-        m_camera = GetComponent<Camera>();
 	}
 	
 	void Update ()
@@ -27,12 +26,10 @@ public class PlayerMovement : MonoBehaviour
         m_inputs.x = Input.GetAxis("Horizontal");
         m_inputs.z = Input.GetAxis("Vertical");
 
-        if (m_inputs != Vector3.zero) // Updates player steering
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            transform.forward = m_inputs;
+            Cursor.lockState = CursorLockMode.None;
         }
-
-        //m_camera.LookRotation(transform, m_camera.transform);
     }
 
     void FixedUpdate()
@@ -57,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
             m_speed = m_walkSpeed;
         }
 
-        m_rigidbody.MovePosition(m_rigidbody.position + m_inputs * m_speed * Time.fixedDeltaTime);
+        m_inputs.x *= Time.deltaTime;
+        m_inputs.z *= Time.deltaTime;
+
+        transform.Translate(m_inputs.x * m_speed, 0, m_inputs.z * m_speed);
+
     }
 }
