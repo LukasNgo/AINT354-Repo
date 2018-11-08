@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 445ac3909d9861f4db3e9393d865d48c
+=======
 guid: c577f655b9a00b24e911c094ce0747d2
+>>>>>>> origin/Player-health-&-death
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
