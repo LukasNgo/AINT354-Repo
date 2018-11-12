@@ -6,7 +6,12 @@ public class SonarFxTest : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
+        {
+            GetComponent<SonarFx>().SetOrigin();
             GetComponent<SonarFxSwitcher>().Toggle();
+        }
+
+        
     }
 
     void OnGUI()

@@ -116,4 +116,17 @@ public class SonarFx : MonoBehaviour
             Shader.SetGlobalVector(waveVectorID, _origin);
         }
     }
+
+    public void SetOrigin()
+    {
+        RaycastHit hit;
+        Ray ray;
+
+        ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            Transform objectHit = hit.transform;
+            GetComponent<SonarFx>().origin.Set(objectHit.position.x, objectHit.position.y, objectHit.position.z);
+        }
+    }
 }
