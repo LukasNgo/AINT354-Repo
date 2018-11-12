@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Unlit_Transparency
-  m_Shader: {fileID: 4800000, guid: 92875a271e56ccc4f8ee2f0741e539c1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1243200ca0788ef43811616cb0695689, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,11 +18,23 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 305f1c465b7987a488ebcde4e92b7948, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 030a2203b44d7424eb2e7a5b9a00d8ef, type: 3}
-        m_Scale: {x: 3, y: 2}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Amount: 1
+    - _Amplitude: 1
+    - _CutoutThresh: 0.2
+    - _Distance: 1
+    - _Glossiness: 0
+    - _Metallic: 0
+    - _Speed: 1
     - _Transparency: 1
     m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
     - _TintColor: {r: 0.046593796, g: 0.0057404665, b: 0.4056604, a: 1}
