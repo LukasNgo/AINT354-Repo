@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class ShaderTransition : MonoBehaviour
 {
-    public Material[] mats;
+    // Get materials to manipulate from serialized variables
+    [SerializeField] private Material defaultShader;
+    [SerializeField] private Material blindShader;
 
     [Range(0.0f, 1.0f)]
     public float transparency = 0f;
 
 	void Start ()
     {
-        mats = GetComponent<Renderer>().materials;
+        Material[] mats = new Material[2];
+        mats[0] = new Material(defaultShader);
+        mats[1] = new Material(blindShader);
+
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            this.transform.GetChild(i).GetComponent<Renderer>().materials = mats;
+        }
     }
 	
 	void Update ()
     {
-        mats[1].SetFloat("_Transparency", transparency);
-	}
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            Material[] childMats = this.transform.GetChild(i).GetComponent<Renderer>().materials;
+
+            childMats[1].SetFloat("_Transparency", transparency);
+        }
+    }
+
 }
