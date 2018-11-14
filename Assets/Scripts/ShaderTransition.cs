@@ -29,7 +29,7 @@ public class ShaderTransition : MonoBehaviour
         {
             Material[] childMats = this.transform.GetChild(i).GetComponent<Renderer>().materials;
 
-            childMats[1].SetFloat("_Transparency", transparency);
+            childMats[1].SetFloat("Vector1_A0BFACDF", transparency);
         }
     }
 
