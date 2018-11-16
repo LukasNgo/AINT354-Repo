@@ -11,7 +11,7 @@ public class ShaderTransition : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float transparency = 0f;
 
-	void Start ()
+    void Start()
     {
         Material[] mats = new Material[2];
         mats[0] = new Material(defaultShader);
@@ -22,14 +22,14 @@ public class ShaderTransition : MonoBehaviour
             this.transform.GetChild(i).GetComponent<Renderer>().materials = mats;
         }
     }
-	
-	void Update ()
+
+    void Update()
     {
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Material[] childMats = this.transform.GetChild(i).GetComponent<Renderer>().materials;
 
-            childMats[1].SetFloat("Vector1_A0BFACDF", transparency);
+            childMats[0].SetFloat("_Transparency", transparency);
         }
     }
 
