@@ -141,7 +141,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 3.1415927
+  m_Intensity: 0.44
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -261,7 +261,7 @@ MonoBehaviour:
   useOldInspector: 0
   featuresFoldout: 1
   showAdditionalSettings: 0
-  displayLightIntensity: 3.1415927
+  displayLightIntensity: 0.44
   displayAreaLightEmissiveMesh: 0
 --- !u!1 &259052261
 GameObject:
@@ -805,8 +805,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultShader: {fileID: 2100000, guid: f4dfdb1d77348a44db5306dfd8ed0cfc, type: 2}
-  blindShader: {fileID: 2100000, guid: 8c6b9ac1baade974184353fbf8c7ee92, type: 2}
-  transparency: 1
+  blindShader: {fileID: 2100000, guid: f46b8a036746e2d40b302d3490e50e75, type: 2}
+  transparency: 0
 --- !u!4 &1434384443
 Transform:
   m_ObjectHideFlags: 0
