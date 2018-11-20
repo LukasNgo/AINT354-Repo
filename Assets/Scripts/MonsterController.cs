@@ -9,26 +9,35 @@ public class MonsterController : MonoBehaviour {
     private float wanderRadius = 1000;
     [SerializeField]
     private float wanderTimer = 10;
+    [SerializeField]
+    private float detectionRange = 5;
+    [SerializeField]
+    private Transform _player;
+    [SerializeField]
+    private EcholocationManager echolocation;
 
     private Transform target;
-    private NavMeshAgent agent;
-    private float timer;
+    private NavMeshAgent _agent;
+    private float _timer;
+    private RaycastHit _raycastHit;
 
     void OnEnable()
     {
-        agent = GetComponent<NavMeshAgent>();
-        timer = wanderTimer;
+        _agent = GetComponent<NavMeshAgent>();
+        _timer = wanderTimer;
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
+        detectPlayer();
 
-        if (timer >= wanderTimer)
+        _timer += Time.deltaTime;
+
+        if (_timer >= wanderTimer)
         {
             Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPos);
-            timer = 0;
+            _agent.SetDestination(newPos);
+            _timer = 0;
         }
     }
 
@@ -44,4 +53,23 @@ public class MonsterController : MonoBehaviour {
 
         return navHit.position;
     }
+
+    private void detectPlayer()
+    {
+        if (Vector3.Distance(transform.position, _player.position) < detectionRange)
+        {
+            if (Physics.Raycast(transform.position, (_player.position - transform.position), out _raycastHit, detectionRange))
+            {
+                if (_raycastHit.transform == _player)
+                {
+                    echolocation.isEcholocationActive = true;
+                }
+            }
+        }
+        else
+        {
+            echolocation.isEcholocationActive = false;
+        }
+    }
+
 }

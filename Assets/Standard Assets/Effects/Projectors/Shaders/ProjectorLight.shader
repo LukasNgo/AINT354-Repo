@@ -6,6 +6,7 @@ Shader "Projector/Light" {
 		_Color ("Main Color", Color) = (1,1,1,1)
 		_ShadowTex ("Cookie", 2D) = "" {}
 		_FalloffTex ("FallOff", 2D) = "" {}
+		_Transparency ("Transparency", Range(0.0,1.0)) = 1
 	}
 	
 	Subshader {
@@ -45,15 +46,16 @@ Shader "Projector/Light" {
 			fixed4 _Color;
 			sampler2D _ShadowTex;
 			sampler2D _FalloffTex;
-			
+			float _Transparency;
+
 			fixed4 frag (v2f i) : SV_Target
 			{
 				fixed4 texS = tex2Dproj (_ShadowTex, UNITY_PROJ_COORD(i.uvShadow));
 				texS.rgb *= _Color.rgb;
 				texS.a = 1.0-texS.a;
-	
+
 				fixed4 texF = tex2Dproj (_FalloffTex, UNITY_PROJ_COORD(i.uvFalloff));
-				fixed4 res = texS * texF.a;
+				fixed4 res = texS * texF.a * _Transparency;
 
 				UNITY_APPLY_FOG_COLOR(i.fogCoord, res, fixed4(0,0,0,0));
 				return res;

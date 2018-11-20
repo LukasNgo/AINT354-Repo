@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LightsController : MonoBehaviour {
 
-    private bool isLightOn = true;
+    [SerializeField]
+    private EcholocationManager echolocation;
 
     private Light[] Lights;
     void Start()
@@ -14,23 +15,18 @@ public class LightsController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isLightOn = !isLightOn;
-        }
-
-        if (isLightOn)
+        if (echolocation.isEcholocationActive)
         {
             foreach (Light x in Lights)
             {
-                x.enabled = true;
+                x.enabled = false;
             }
         }
         else
         {
             foreach (Light x in Lights)
             {
-                x.enabled = false;
+                x.enabled = true;
             }
         }
     }

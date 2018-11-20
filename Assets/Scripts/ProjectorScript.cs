@@ -6,24 +6,26 @@ public class ProjectorScript : MonoBehaviour {
 
     [SerializeField]
     private Projector _projector;
+    [SerializeField]
+    private int min = 10;
+    [SerializeField]
+    private int max = 180;
 
     private float t = 0;
 
     [SerializeField]
     private int duration = 3;
-    [SerializeField]
-    private int destroyAfter = 5;
 
     private void Start()
     {
-        Destroy(gameObject, destroyAfter);
+        Destroy(gameObject, duration);
     }
 
     void Update () {
-        //transform.Rotate(Vector3.right * Time.deltaTime);
+        transform.Rotate(Vector3.right * Time.deltaTime);
 
         t += Time.deltaTime / duration;
-        _projector.fieldOfView = Mathf.Lerp(10, 180, t);
+        _projector.fieldOfView = Mathf.Lerp(min, max, t);
 	}
 
 }
