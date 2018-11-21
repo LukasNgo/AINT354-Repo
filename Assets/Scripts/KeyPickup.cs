@@ -16,7 +16,6 @@ public class KeyPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Near key");
         if (other.tag == "Player")
         {
             m_hasCollided = true;
@@ -26,7 +25,6 @@ public class KeyPickup : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Not near key");
         if (other.tag == "Player")
         {
             m_hasCollided = false;
@@ -49,7 +47,6 @@ public class KeyPickup : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("E is pressed");
                 m_keyInventory.AddKey();
                 Destroy(this);
                 gameObject.GetComponent<Renderer>().enabled = false;
