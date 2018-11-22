@@ -95,12 +95,14 @@ public class MonsterController : MonoBehaviour {
         if (isFollowing == false)
         {
             _agent.speed = 1.5f;
+            GetComponent<Animator>().SetTrigger("MonsterWalk");
         }
 
         //running speed
         if (isFollowing == true)
         {
             _agent.speed = 4f;
+            GetComponent<Animator>().SetTrigger("MonsterRun");
         }
 
         //if monster is not following sound or player then roam randomly
@@ -111,12 +113,12 @@ public class MonsterController : MonoBehaviour {
             _timer = 0;
         }
 
-        //if monster is following something then reaches the desired destination then stop following and set animation to walking
-        if (isFollowing && Vector3.Distance(transform.position, tempDestination.position) < 2)
-        {
-            isFollowing = false;
-            GetComponent<Animator>().SetTrigger("MonsterWalk");
-        }
+        ////if monster is following something then reaches the desired destination then stop following and set animation to walking
+        //if (isFollowing && Vector3.Distance(transform.position, tempDestination.position) < 2)
+        //{
+        //    isFollowing = false;
+        //    GetComponent<Animator>().SetTrigger("MonsterWalk");
+        //}
 
         //if monster is very close to player, attack the player and follow until player is out of reach
         if (Vector3.Distance(transform.position, _player.position) < 2)
@@ -129,8 +131,25 @@ public class MonsterController : MonoBehaviour {
                 isTimeOut = true;
                 StartCoroutine(AttackPlayer(2));
             }
+            else
+            {
+                GetComponent<Animator>().SetTrigger("MonsterWalk");
+            }
             
         }
+
+        //check if monster is standing still and if so then give it new destination
+        if (_agent.velocity.x == 0.0 && _agent.velocity.y == 0.0 && _agent.velocity.z == 0.0)
+        {
+            isFollowing = false;
+            GetComponent<Animator>().SetTrigger("MonsterWalk");
+            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+            _agent.SetDestination(newPos);
+            _timer = 0;
+        }
+
+        Debug.Log(isFollowing);
+        Debug.Log(_agent.velocity);
     }
 
     //function to attack player, deal damage and wait x second between attacks
