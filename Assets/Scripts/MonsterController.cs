@@ -10,7 +10,7 @@ public class MonsterController : MonoBehaviour {
     [SerializeField]
     private float wanderTimer = 10;
     [SerializeField]
-    private float detectionRange = 5;
+    private float detectionRange = 40;
     [SerializeField]
     private Transform _player;
     [SerializeField]
