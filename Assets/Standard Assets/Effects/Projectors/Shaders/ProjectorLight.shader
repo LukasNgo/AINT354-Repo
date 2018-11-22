@@ -6,7 +6,7 @@ Shader "Projector/Light" {
 		_Color ("Main Color", Color) = (1,1,1,1)
 		_ShadowTex ("Cookie", 2D) = "" {}
 		_FalloffTex ("FallOff", 2D) = "" {}
-		_Transparency ("Transparency", Range(0.0,1.0)) = 1
+		//_Transparency ("Transparency", Range(0.0,1.0)) = 1
 	}
 	
 	Subshader {

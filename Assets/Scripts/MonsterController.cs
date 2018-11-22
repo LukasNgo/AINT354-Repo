@@ -21,6 +21,8 @@ public class MonsterController : MonoBehaviour {
     private float _timer;
     private RaycastHit _raycastHit;
 
+    private bool _transparencyBool = false;
+
     void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -38,6 +40,36 @@ public class MonsterController : MonoBehaviour {
             Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
             _agent.SetDestination(newPos);
             _timer = 0;
+        }
+
+        //Debug.Log(_transparencyBool);
+        //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
+
+        if (_transparencyBool)
+        {
+            if (Shader.GetGlobalFloat("_Transparency") < 1)
+            {
+                Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 1, Time.deltaTime / 3)));
+                //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
+
+                if(Shader.GetGlobalFloat("_Transparency") > 0.9)
+                {
+                    Shader.SetGlobalFloat("_Transparency", 1);
+                }
+            }
+        }
+        else
+        {
+            if(Shader.GetGlobalFloat("_Transparency") > 0)
+            {
+                Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 0, Time.deltaTime / 3)));
+                //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
+
+                if (Shader.GetGlobalFloat("_Transparency") < 0.1)
+                {
+                    Shader.SetGlobalFloat("_Transparency", 0);
+                }
+            }
         }
     }
 
@@ -63,12 +95,23 @@ public class MonsterController : MonoBehaviour {
                 if (_raycastHit.transform == _player)
                 {
                     echolocation.isEcholocationActive = true;
+                    Debug.Log("Echolocation on.");
+                    if (!_transparencyBool)
+                    {
+                        _transparencyBool = true;
+                    }
+                    
                 }
             }
         }
         else
         {
+            Debug.Log("Echolocation off.");
             echolocation.isEcholocationActive = false;
+            if(_transparencyBool)
+            {
+                _transparencyBool = false;
+            }
         }
     }
 
