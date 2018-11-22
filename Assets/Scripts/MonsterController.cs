@@ -10,7 +10,7 @@ public class MonsterController : MonoBehaviour {
     [SerializeField]
     private float wanderTimer = 10;
     [SerializeField]
-    private float detectionRange = 40;
+    private float detectionRange = 200;
     [SerializeField]
     private Transform _player;
     [SerializeField]
@@ -57,6 +57,16 @@ public class MonsterController : MonoBehaviour {
                     Shader.SetGlobalFloat("_Transparency", 1);
                 }
             }
+
+            if (Shader.GetGlobalFloat("_TransparencyMaterial") < 1)
+            {
+                Shader.SetGlobalFloat("_TransparencyMaterial", (Mathf.Lerp(Shader.GetGlobalFloat("_TransparencyMaterial"), 1, Time.deltaTime / 3)));
+
+                if (Shader.GetGlobalFloat("_TransparencyMaterial") > 0.9)
+                {
+                    Shader.SetGlobalFloat("_TransparencyMaterial", 1);
+                }
+            }
         }
         else
         {
@@ -68,6 +78,16 @@ public class MonsterController : MonoBehaviour {
                 if (Shader.GetGlobalFloat("_Transparency") < 0.1)
                 {
                     Shader.SetGlobalFloat("_Transparency", 0);
+                }
+            }
+
+            if (Shader.GetGlobalFloat("_TransparencyMaterial") > 0)
+            {
+                Shader.SetGlobalFloat("_TransparencyMaterial", (Mathf.Lerp(Shader.GetGlobalFloat("_TransparencyMaterial"), 0, Time.deltaTime / 3)));
+
+                if (Shader.GetGlobalFloat("_TransparencyMaterial") < 0.1)
+                {
+                    Shader.SetGlobalFloat("_TransparencyMaterial", 0);
                 }
             }
         }
