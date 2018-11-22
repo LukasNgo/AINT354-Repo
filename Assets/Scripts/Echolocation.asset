@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fa5c3d3491c194a8770d30afc1af3f, type: 3}
   m_Name: Echolocation
   m_EditorClassIdentifier: 
-  isEcholocationActive: 1
+  isEcholocationActive: 0
