@@ -115,7 +115,7 @@ public class MonsterController : MonoBehaviour {
                 if (_raycastHit.transform == _player)
                 {
                     echolocation.isEcholocationActive = true;
-                    Debug.Log("Echolocation on.");
+                    //Debug.Log("Echolocation on.");
                     if (!_transparencyBool)
                     {
                         _transparencyBool = true;
@@ -126,7 +126,7 @@ public class MonsterController : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Echolocation off.");
+            //Debug.Log("Echolocation off.");
             echolocation.isEcholocationActive = false;
             if(_transparencyBool)
             {
