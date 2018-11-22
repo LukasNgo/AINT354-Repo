@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
 
     private void Death()
     {
-        Destroy(this);
+        //Destroy(this);
 
         m_isAlive = false;
     }

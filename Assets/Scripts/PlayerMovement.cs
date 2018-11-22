@@ -30,6 +30,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+
+        //test to follow player and attack. delete later.
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
+        }
+        Debug.Log("current health " + GetComponent<Player>().GetHealth());
     }
 
     void FixedUpdate()
