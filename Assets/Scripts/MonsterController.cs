@@ -17,6 +17,8 @@ public class MonsterController : MonoBehaviour {
     private Transform _player;
     [SerializeField]
     private EcholocationManager echolocation;
+    [SerializeField]
+    private float attackRange = 5f;
 
     private Transform target;
     private NavMeshAgent _agent;
@@ -121,19 +123,22 @@ public class MonsterController : MonoBehaviour {
         //}
 
         //if monster is very close to player, attack the player and follow until player is out of reach
-        if (Vector3.Distance(transform.position, _player.position) < 2)
+        if (Vector3.Distance(transform.position, _player.position) < attackRange)
         {
             
             _agent.SetDestination(_player.position);
             if (!isTimeOut)
             {
-                GetComponent<Animator>().SetTrigger("MonsterAttack");
-                isTimeOut = true;
-                StartCoroutine(AttackPlayer(2));
+                if (Vector3.Distance(transform.position, _player.position) < 2)
+                {
+                    GetComponent<Animator>().SetTrigger("MonsterAttack");
+                    isTimeOut = true;
+                    StartCoroutine(AttackPlayer(2));
+                }
             }
             else
             {
-                GetComponent<Animator>().SetTrigger("MonsterWalk");
+                GetComponent<Animator>().SetTrigger("MonsterRun");
             }
             
         }
@@ -141,6 +146,7 @@ public class MonsterController : MonoBehaviour {
         //check if monster is standing still and if so then give it new destination
         if (_agent.velocity.x == 0.0 && _agent.velocity.y == 0.0 && _agent.velocity.z == 0.0)
         {
+            Debug.Log("Walking randomly");
             isFollowing = false;
             GetComponent<Animator>().SetTrigger("MonsterWalk");
             Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
@@ -158,7 +164,7 @@ public class MonsterController : MonoBehaviour {
         _player.GetComponent<Player>().TakeDamage(damageDeal);
         yield return new WaitForSeconds(time);
         isTimeOut = false;
-        GetComponent<Animator>().SetTrigger("MonsterWalk");
+        GetComponent<Animator>().SetTrigger("MonsterRun");
     }
 
     //calculate random navmesh destination
@@ -178,31 +184,29 @@ public class MonsterController : MonoBehaviour {
     //detect range from player to trigger echolocation
     private void detectPlayer()
     {
-        if (Vector3.Distance(transform.position, _player.position) < detectionRange)
+        
+        if (Physics.Raycast(transform.position, (_player.position - transform.position), out _raycastHit, detectionRange))
         {
-            if (Physics.Raycast(transform.position, (_player.position - transform.position), out _raycastHit, detectionRange))
+            if (_raycastHit.transform == _player || Vector3.Distance(transform.position, _player.position) < 10f)
             {
-                if (_raycastHit.transform == _player)
+                echolocation.isEcholocationActive = true;
+                //Debug.Log("Echolocation on.");
+                if (!_transparencyBool)
                 {
-                    echolocation.isEcholocationActive = true;
-                    //Debug.Log("Echolocation on.");
-                    if (!_transparencyBool)
-                    {
-                        _transparencyBool = true;
-                    }
+                    _transparencyBool = true;
+                }
                     
+            }
+            else
+            {
+                //Debug.Log("Echolocation off.");
+                echolocation.isEcholocationActive = false;
+                if (_transparencyBool)
+                {
+                    _transparencyBool = false;
                 }
             }
-        }
-        else
-        {
-            //Debug.Log("Echolocation off.");
-            echolocation.isEcholocationActive = false;
-            if(_transparencyBool)
-            {
-                _transparencyBool = false;
-            }
-        }
+        }      
     }
 
     //Use this from other gameobject to set the destination to it: GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());

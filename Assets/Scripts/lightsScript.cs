@@ -20,7 +20,7 @@ public class lightsScript : MonoBehaviour {
 	void Update () {
         if (m_lightController_script.getLightsOn() == false)
         {
-            m_light.intensity = Mathf.Lerp(m_light.intensity, 0, Time.deltaTime * 2);
+            m_light.intensity = Mathf.Lerp(m_light.intensity, 0, Time.deltaTime * 4);
             //Debug.Log(m_light.intensity);
             if (m_light.intensity < 0.005)
             {
@@ -29,7 +29,7 @@ public class lightsScript : MonoBehaviour {
         }
         else if (m_lightController_script.getLightsOn() == true)
         {
-            m_light.intensity = Mathf.Lerp(m_light.intensity, m_maxIntensity, Time.deltaTime / 2);
+            m_light.intensity = Mathf.Lerp(m_light.intensity, m_maxIntensity, Time.deltaTime * 2);
             //Debug.Log(m_light.intensity);
             if (m_light.intensity > m_maxIntensity - 0.005)
             {

@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
         }
-        //Debug.Log("current health " + GetComponent<Player>().GetHealth());
+        Debug.Log("current health " + GetComponent<Player>().GetHealth());
     }
 
     void FixedUpdate()
