@@ -50,7 +50,7 @@ public class MonsterController : MonoBehaviour {
         {
             if (Shader.GetGlobalFloat("_Transparency") < 1)
             {
-                Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 1, Time.deltaTime / 3)));
+                Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 1, Time.deltaTime * 4)));
                 //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
 
                 if (Shader.GetGlobalFloat("_Transparency") > 0.9)
@@ -61,7 +61,7 @@ public class MonsterController : MonoBehaviour {
 
             if (Shader.GetGlobalFloat("_TransparencyMaterial") < 1)
             {
-                Shader.SetGlobalFloat("_TransparencyMaterial", (Mathf.Lerp(Shader.GetGlobalFloat("_TransparencyMaterial"), 1, Time.deltaTime / 3)));
+                Shader.SetGlobalFloat("_TransparencyMaterial", (Mathf.Lerp(Shader.GetGlobalFloat("_TransparencyMaterial"), 1, Time.deltaTime * 4)));
 
                 if (Shader.GetGlobalFloat("_TransparencyMaterial") > 0.9)
                 {
@@ -73,10 +73,10 @@ public class MonsterController : MonoBehaviour {
         {
             if (Shader.GetGlobalFloat("_Transparency") > 0)
             {
-                Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 0, Time.deltaTime / 3)));
+                Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 0, Time.deltaTime * 2)));
                 //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
 
-                if (Shader.GetGlobalFloat("_Transparency") < 0.1)
+                if (Shader.GetGlobalFloat("_Transparency") < 0.02)
                 {
                     Shader.SetGlobalFloat("_Transparency", 0);
                 }
@@ -84,9 +84,9 @@ public class MonsterController : MonoBehaviour {
 
             if (Shader.GetGlobalFloat("_TransparencyMaterial") > 0)
             {
-                Shader.SetGlobalFloat("_TransparencyMaterial", (Mathf.Lerp(Shader.GetGlobalFloat("_TransparencyMaterial"), 0, Time.deltaTime / 3)));
+                Shader.SetGlobalFloat("_TransparencyMaterial", (Mathf.Lerp(Shader.GetGlobalFloat("_TransparencyMaterial"), 0, Time.deltaTime * 2)));
 
-                if (Shader.GetGlobalFloat("_TransparencyMaterial") < 0.1)
+                if (Shader.GetGlobalFloat("_TransparencyMaterial") < 0.02)
                 {
                     Shader.SetGlobalFloat("_TransparencyMaterial", 0);
                 }
@@ -129,7 +129,8 @@ public class MonsterController : MonoBehaviour {
             _agent.SetDestination(_player.position);
             if (!isTimeOut)
             {
-                if (Vector3.Distance(transform.position, _player.position) < 2)
+                
+                if (Vector3.Distance(transform.position, _player.position) < 3)
                 {
                     GetComponent<Animator>().SetTrigger("MonsterAttack");
                     isTimeOut = true;
