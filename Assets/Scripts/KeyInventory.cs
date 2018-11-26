@@ -6,7 +6,15 @@ public class KeyInventory : MonoBehaviour
 {
     private List<int> m_keyList = new List<int>();
 
-	public void AddKey()
+    private void Update()
+    {
+        if (m_keyList.Count > 0)
+        {
+            KeyGUI();
+        }
+    }
+
+    public void AddKey()
     {
         m_keyList.Add(1);
         Debug.Log("list value = " + m_keyList.Count);
@@ -25,5 +33,10 @@ public class KeyInventory : MonoBehaviour
     public int GetKeyCount()
     {
         return m_keyList.Count;
+    }
+
+    public void KeyGUI()
+    {
+
     }
 }

@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Esccape pressed");
             ToggleCursor();
         }
     }

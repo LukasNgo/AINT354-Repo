@@ -50,7 +50,6 @@ public class KeySpawn : MonoBehaviour
             }
 
             chosenObject.tag = "Chosen";
-            Debug.Log("Chosen object = " + chosenObject.name);
             m_chosenSpawns.Add(chosenObject);
         }
     }
@@ -60,7 +59,6 @@ public class KeySpawn : MonoBehaviour
         foreach (Transform child in m_keySpawns)
         {
             m_chosenSpawns.Add(child);
-            Debug.Log("Chosen object = " + child.name);
         }
     }
 }
