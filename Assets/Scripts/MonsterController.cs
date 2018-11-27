@@ -39,19 +39,20 @@ public class MonsterController : MonoBehaviour {
 
     void Update()
     {
+
+        //Debug.Log("monster destination " + _agent.destination);
+        //Debug.Log("monster position " + _agent.transform.position);
+        //Debug.Log("player position " + _player.position);
+
         detectPlayer();
 
         _timer += Time.deltaTime;
-
-        //Debug.Log(_transparencyBool);
-        //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
 
         if (_transparencyBool)
         {
             if (Shader.GetGlobalFloat("_Transparency") < 1)
             {
                 Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 1, Time.deltaTime * 4)));
-                //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
 
                 if (Shader.GetGlobalFloat("_Transparency") > 0.9)
                 {
@@ -74,7 +75,6 @@ public class MonsterController : MonoBehaviour {
             if (Shader.GetGlobalFloat("_Transparency") > 0)
             {
                 Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 0, Time.deltaTime * 2)));
-                //Debug.Log(Shader.GetGlobalFloat("_Transparency"));
 
                 if (Shader.GetGlobalFloat("_Transparency") < 0.02)
                 {
@@ -94,14 +94,14 @@ public class MonsterController : MonoBehaviour {
         }
 
         //walking speed
-        if (isFollowing == false)
+        if (isFollowing == false && isTimeOut == false)
         {
             _agent.speed = 1.5f;
             GetComponent<Animator>().SetTrigger("MonsterWalk");
         }
 
         //running speed
-        if (isFollowing == true)
+        if (isFollowing == true && isTimeOut == false)
         {
             _agent.speed = 4f;
             GetComponent<Animator>().SetTrigger("MonsterRun");
@@ -115,13 +115,6 @@ public class MonsterController : MonoBehaviour {
             _timer = 0;
         }
 
-        ////if monster is following something then reaches the desired destination then stop following and set animation to walking
-        //if (isFollowing && Vector3.Distance(transform.position, tempDestination.position) < 2)
-        //{
-        //    isFollowing = false;
-        //    GetComponent<Animator>().SetTrigger("MonsterWalk");
-        //}
-
         //if monster is very close to player, attack the player and follow until player is out of reach
         if (Vector3.Distance(transform.position, _player.position) < attackRange)
         {
@@ -132,31 +125,22 @@ public class MonsterController : MonoBehaviour {
                 
                 if (Vector3.Distance(transform.position, _player.position) < 3)
                 {
-                    GetComponent<Animator>().SetTrigger("MonsterAttack");
                     isTimeOut = true;
+                    GetComponent<Animator>().SetTrigger("MonsterAttack");
                     StartCoroutine(AttackPlayer(2));
                 }
             }
-            else
-            {
-                GetComponent<Animator>().SetTrigger("MonsterRun");
-            }
-            
         }
 
-        //check if monster is standing still and if so then give it new destination
-        if (_agent.velocity.x == 0.0 && _agent.velocity.y == 0.0 && _agent.velocity.z == 0.0)
+        //check if monster has a destination and give it a new one if it doesn't
+        if(_agent.destination == _agent.transform.position)
         {
-            Debug.Log("Walking randomly");
             isFollowing = false;
-            GetComponent<Animator>().SetTrigger("MonsterWalk");
+            //GetComponent<Animator>().SetTrigger("MonsterWalk");
             Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
             _agent.SetDestination(newPos);
             _timer = 0;
         }
-
-        Debug.Log(isFollowing);
-        Debug.Log(_agent.velocity);
     }
 
     //function to attack player, deal damage and wait x second between attacks
@@ -165,7 +149,6 @@ public class MonsterController : MonoBehaviour {
         _player.GetComponent<Player>().TakeDamage(damageDeal);
         yield return new WaitForSeconds(time);
         isTimeOut = false;
-        GetComponent<Animator>().SetTrigger("MonsterRun");
     }
 
     //calculate random navmesh destination
@@ -191,7 +174,6 @@ public class MonsterController : MonoBehaviour {
             if (_raycastHit.transform == _player || Vector3.Distance(transform.position, _player.position) < 10f)
             {
                 echolocation.isEcholocationActive = true;
-                //Debug.Log("Echolocation on.");
                 if (!_transparencyBool)
                 {
                     _transparencyBool = true;
@@ -200,7 +182,6 @@ public class MonsterController : MonoBehaviour {
             }
             else
             {
-                //Debug.Log("Echolocation off.");
                 echolocation.isEcholocationActive = false;
                 if (_transparencyBool)
                 {
@@ -216,7 +197,6 @@ public class MonsterController : MonoBehaviour {
         isFollowing = true;
         tempDestination = newDest;
         _agent.SetDestination(tempDestination.position);
-        GetComponent<Animator>().SetTrigger("MonsterRun");
     }
 
 }

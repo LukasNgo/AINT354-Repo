@@ -1911,7 +1911,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010402951368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.637, y: 0.017753346, z: -6.1}
+  m_LocalPosition: {x: 0.637, y: 3.98, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000011082351298}
@@ -2662,9 +2662,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wanderRadius: 1000
   wanderTimer: 10
-  detectionRange: 10
+  detectionRange: 200
+  damageDeal: 50
   _player: {fileID: 0}
   echolocation: {fileID: 11400000, guid: c830b328529666e4e8716deb9b32304f, type: 2}
+  attackRange: 5
+  isFollowing: 0
 --- !u!114 &114652724622519790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2677,7 +2680,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projector: {fileID: 1547979961738606, guid: 7eaf0d475905c464f8b324fb423ad2c2, type: 2}
-  projector2: {fileID: 1296040512259588, guid: e8043349b5b26b04b94a8ac9da3e95cc, type: 2}
   delay: 0.7
   echolocation: {fileID: 11400000, guid: c830b328529666e4e8716deb9b32304f, type: 2}
 --- !u!136 &136682159565123264
