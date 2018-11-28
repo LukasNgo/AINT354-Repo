@@ -67,4 +67,9 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(m_inputs.x * m_speed, 0, m_inputs.z * m_speed);
 
     }
+
+    public bool isPlayerRunning()
+    {
+        return m_isRunning;
+    }
 }

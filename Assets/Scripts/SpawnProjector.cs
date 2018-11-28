@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SpawnProjector : MonoBehaviour {
 
-    public GameObject projector;
+    [SerializeField]
+    private EcholocationManager echolocation;
+
+    private ObjectPooler objectPooler;
+
+    private void Start()
+    {
+        objectPooler = ObjectPooler.Instance;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            Vector3 pos = contact.point;
-            Instantiate(projector, pos, rot);
+            if (echolocation.isEcholocationActive)
+            {
+                Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+                Vector3 pos = contact.point;
+                objectPooler.SpawnFromPool("WHITE", pos, rot);
+            }
         }
     }
 }
