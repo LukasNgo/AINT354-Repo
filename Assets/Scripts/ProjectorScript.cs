@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectorScript : MonoBehaviour {
+public class ProjectorScript : MonoBehaviour{
 
     [SerializeField]
     private Projector _projector;
@@ -10,22 +10,26 @@ public class ProjectorScript : MonoBehaviour {
     private int min = 10;
     [SerializeField]
     private int max = 180;
-
-    private float t = 0;
-
     [SerializeField]
-    private int duration = 3;
+    private float duration = 3;
 
-    private void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, duration);
+        StartCoroutine(PulseEffect());
     }
 
-    void Update () {
-        transform.Rotate(Vector3.right * Time.deltaTime);
+    private IEnumerator PulseEffect()
+    {
+        float elapsedTime = 0;
 
-        t += Time.deltaTime / duration;
-        _projector.fieldOfView = Mathf.Lerp(min, max, t);
-	}
-
+        while (elapsedTime < duration)
+        {
+            transform.Rotate(Vector3.right * Time.deltaTime);
+            elapsedTime += Time.deltaTime / duration;
+            _projector.fieldOfView = Mathf.Lerp(min, max, elapsedTime);
+            yield return null;
+        }
+        
+        gameObject.SetActive(false);
+    }
 }

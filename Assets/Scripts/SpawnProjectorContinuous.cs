@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class SpawnProjectorContinuous : MonoBehaviour {
 
-    public GameObject projector;
-    //public GameObject projector2;
+    //public GameObject projector;
+
     [SerializeField]
     private float delay = 0.7f;
     [SerializeField]
     private EcholocationManager echolocation;
 
-	// Use this for initialization
+    private ObjectPooler objectPooler;
+
 	void Start () {
+        objectPooler = ObjectPooler.Instance;
+
         StartCoroutine(SpawnProjector());
 	}
 	
-
-
     private IEnumerator SpawnProjector()
     {
         while (true)
         {
             if (echolocation.isEcholocationActive)
             {
-                Instantiate(projector, transform.position, transform.rotation);
-                //Instantiate(projector2, transform.position, transform.rotation);
+                objectPooler.SpawnFromPool("RED", transform.position, Quaternion.identity);
             }
             yield return new WaitForSeconds(delay);
         }
