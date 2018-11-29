@@ -22,7 +22,7 @@ public class SpawnProjector : MonoBehaviour {
             {
                 Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
                 Vector3 pos = contact.point;
-                objectPooler.SpawnFromPool("WHITE", pos, rot);
+                objectPooler.SpawnFromPool("BLUE", pos, rot);
             }
         }
     }

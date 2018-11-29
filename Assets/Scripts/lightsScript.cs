@@ -25,10 +25,12 @@ public class lightsScript : MonoBehaviour {
             if (m_light.intensity < 0.005)
             {
                 m_light.intensity = 0;
+                m_light.enabled = false;
             }
         }
         else if (m_lightController_script.getLightsOn() == true)
         {
+            m_light.enabled = true;
             m_light.intensity = Mathf.Lerp(m_light.intensity, m_maxIntensity, Time.deltaTime * 2);
             //Debug.Log(m_light.intensity);
             if (m_light.intensity > m_maxIntensity - 0.005)

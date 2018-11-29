@@ -84,7 +84,7 @@ MonoBehaviour:
   _projector: {fileID: 119882752063059030}
   min: 10
   max: 100
-  duration: 1
+  duration: 2
 --- !u!119 &119882752063059030
 Projector:
   m_ObjectHideFlags: 1
