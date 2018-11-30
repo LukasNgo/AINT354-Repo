@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyInventory : MonoBehaviour
 {
     private List<int> m_keyList = new List<int>();
+    [SerializeField] private GameObject m_keyUI;
+
+    private void Start()
+    {
+        m_keyUI.SetActive(false);
+    }
 
     private void Update()
     {
-        if (m_keyList.Count > 0)
-        {
-            KeyGUI();
-        }
+        KeyGUI();        
     }
 
     public void AddKey()
@@ -38,5 +42,15 @@ public class KeyInventory : MonoBehaviour
     public void KeyGUI()
     {
 
+        if (m_keyList.Count > 0)
+        {
+            m_keyUI.SetActive(true);
+        }
+        else
+        {
+            m_keyUI.SetActive(false);
+        }
+        m_keyUI.GetComponentInChildren<Text>().text = ("Keys: " + m_keyList.Count);       
     }
+
 }
