@@ -8,6 +8,7 @@ TagManager:
   - Pulse
   - Object
   - Chosen
+  - Torch
   layers:
   - Default
   - TransparentFX
