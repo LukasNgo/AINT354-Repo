@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Start ()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         m_rigidbody = GetComponent<Rigidbody>();
 	}
 	
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
+            ToggleCursor();
         }
 
         //test to follow player and attack. delete later.
@@ -66,6 +67,12 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(m_inputs.x * m_speed, 0, m_inputs.z * m_speed);
 
+    }
+
+    private void ToggleCursor()
+    {
+        Cursor.lockState = (Cursor.lockState == CursorLockMode.None) ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = (Cursor.visible == false) ? true : false; 
     }
 
     public bool isPlayerRunning()
