@@ -17,6 +17,8 @@ public class LightsController : MonoBehaviour {
 
     private void Awake()
     {
+        echolocation.isEcholocationActive = false;
+
         Lights = Object.FindObjectsOfType<Light>();
 
         foreach (Light x in Lights)
