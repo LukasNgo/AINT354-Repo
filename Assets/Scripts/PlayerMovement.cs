@@ -33,10 +33,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //test to follow player and attack. delete later.
-        if (Input.GetMouseButtonDown(0))
-        {
-            GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
+        //}
         //Debug.Log("current health " + GetComponent<Player>().GetHealth());
     }
 

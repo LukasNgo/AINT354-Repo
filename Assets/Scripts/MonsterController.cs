@@ -103,7 +103,7 @@ public class MonsterController : MonoBehaviour {
         //running speed
         if (isFollowing == true && isTimeOut == false)
         {
-            _agent.speed = 4f;
+            _agent.speed = 3.5f;
             GetComponent<Animator>().SetTrigger("MonsterRun");
         }
 

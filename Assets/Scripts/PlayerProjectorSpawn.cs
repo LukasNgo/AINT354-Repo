@@ -25,6 +25,7 @@ public class PlayerProjectorSpawn : MonoBehaviour {
             if (echolocation.isEcholocationActive && GetComponent<PlayerMovement>().isPlayerRunning())
             {
                 objectPooler.SpawnFromPool("BLUE", transform.position, Quaternion.identity);
+                GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
             }
             yield return new WaitForSeconds(delay);
         }
