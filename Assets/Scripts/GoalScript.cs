@@ -10,6 +10,7 @@ public class GoalScript : MonoBehaviour
     private bool m_notEnoughKeys = false;
     private int m_isOpen = 0; // 0 Locked, 1 Unlocked (for "Door Unlocked!" prompt), 2 Uninteractable
     private Rigidbody m_door;
+
     private void Start()
     {
         m_door = transform.Find("Door").GetComponent<Rigidbody>();
@@ -49,11 +50,11 @@ public class GoalScript : MonoBehaviour
         {
             if (m_keyInventory.GetKeyCount() == 1)
             {
-                m_text = ("You have " + m_keyInventory.GetKeyCount() + " key out of 5");
+                m_text = ("You have " + m_keyInventory.GetKeyCount() + " key out of 8");
             }
             else
             {
-                m_text = ("You have " + m_keyInventory.GetKeyCount() + " keys out of 5");
+                m_text = ("You have " + m_keyInventory.GetKeyCount() + " keys out of 8");
             }
             
             GUI.Box(new Rect((Screen.width - 250) / 2, (Screen.height + 80) / 2, 250, 50), m_text);

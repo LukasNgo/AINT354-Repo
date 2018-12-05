@@ -15,7 +15,13 @@ public class KeyInventory : MonoBehaviour
 
     private void Update()
     {
-        KeyGUI();        
+        KeyGUI();
+
+        //test
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            AddKey();
+        }
     }
 
     public void AddKey()

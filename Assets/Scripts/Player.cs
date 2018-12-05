@@ -28,7 +28,7 @@ public class Player : MonoBehaviour {
     {
         m_health -= damage;
 
-        if (m_health == 0)
+        if (m_health <= 0)
         {
             Death();
         }
