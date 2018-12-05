@@ -76,7 +76,7 @@ public class GoalScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (m_keyInventory.GetKeyCount() >= 5)
+                if (m_keyInventory.GetKeyCount() >= 8)
                 {
                     m_door.constraints = RigidbodyConstraints.None;
                     m_keyInventory.RemoveKeys(5);
