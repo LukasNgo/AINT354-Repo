@@ -15,5 +15,10 @@ public class EndGame : MonoBehaviour {
     public void Win()
     {
         EscapeText.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0.04f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        Cursor.visible = true;
+        GameObject.FindObjectOfType<SmoothCameraLook>().enabled = false;
     }
 }

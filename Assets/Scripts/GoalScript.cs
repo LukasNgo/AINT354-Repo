@@ -68,6 +68,8 @@ public class GoalScript : MonoBehaviour
             GUI.Box(new Rect((Screen.width - 200) / 2, (Screen.height - 50) / 2, 200, 50), m_text);
             GUI.skin.box.fontSize = 20;
             GUI.skin.box.alignment = TextAnchor.MiddleCenter;
+
+            GameObject.FindObjectOfType<EndGame>().Win();
         }
     }
 

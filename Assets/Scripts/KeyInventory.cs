@@ -27,7 +27,7 @@ public class KeyInventory : MonoBehaviour
     public void AddKey()
     {
         m_keyList.Add(1);
-        Debug.Log("list value = " + m_keyList.Count);
+        //Debug.Log("list value = " + m_keyList.Count);
     }
 
     public void RemoveKeys(int value)
@@ -37,7 +37,7 @@ public class KeyInventory : MonoBehaviour
             m_keyList.Remove(1);
         }
         
-        Debug.Log("list value = " + m_keyList.Count);
+        //Debug.Log("list value = " + m_keyList.Count);
     }
 
     public int GetKeyCount()
