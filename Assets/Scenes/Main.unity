@@ -258,12 +258,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114467948305893086, guid: 715fd1991a12a9344916b750109d3cac,
+    - target: {fileID: 114647860897989696, guid: 715fd1991a12a9344916b750109d3cac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 551228354}
-    - target: {fileID: 114647860897989696, guid: 715fd1991a12a9344916b750109d3cac,
+    - target: {fileID: 114467948305893086, guid: 715fd1991a12a9344916b750109d3cac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -726,15 +726,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114083708926119602, guid: 32084de7c3db6a74592a9a270a2a71ce,
+        type: 2}
+      propertyPath: EscapeText
+      value: 
+      objectReference: {fileID: 1447249925}
     - target: {fileID: 95749089512578054, guid: 32084de7c3db6a74592a9a270a2a71ce,
         type: 2}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 794151e02931acf43b08273896d9afd1, type: 2}
-    - target: {fileID: 1996900352344298, guid: 32084de7c3db6a74592a9a270a2a71ce, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32084de7c3db6a74592a9a270a2a71ce, type: 2}
   m_IsPrefabAsset: 0
@@ -755,7 +756,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4317223767134824, guid: 328dc9afd621f6a47a381cc8d0754c25, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -13.771
+      value: -12.075
       objectReference: {fileID: 0}
     - target: {fileID: 4317223767134824, guid: 328dc9afd621f6a47a381cc8d0754c25, type: 2}
       propertyPath: m_LocalRotation.x
@@ -779,13 +780,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4317223767134824, guid: 328dc9afd621f6a47a381cc8d0754c25, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114444430619266840, guid: 328dc9afd621f6a47a381cc8d0754c25,
         type: 2}
       propertyPath: EscapeText
       value: 
       objectReference: {fileID: 1447249925}
+    - target: {fileID: 1604612427631042, guid: 328dc9afd621f6a47a381cc8d0754c25, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 328dc9afd621f6a47a381cc8d0754c25, type: 2}
   m_IsPrefabAsset: 0

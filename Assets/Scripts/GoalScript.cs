@@ -13,8 +13,8 @@ public class GoalScript : MonoBehaviour
 
     private void Start()
     {
-        m_door = transform.Find("Door").GetComponent<Rigidbody>();
-        m_door.constraints = RigidbodyConstraints.FreezeRotationY;
+        //m_door = transform.Find("Door").GetComponent<Rigidbody>();
+        //m_door.constraints = RigidbodyConstraints.FreezeRotationY;
         m_keyInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<KeyInventory>();
     }
 
@@ -81,7 +81,7 @@ public class GoalScript : MonoBehaviour
             {
                 if (m_keyInventory.GetKeyCount() >= 8)
                 {
-                    m_door.constraints = RigidbodyConstraints.None;
+                    //m_door.constraints = RigidbodyConstraints.None;
                     m_keyInventory.RemoveKeys(5);
                     m_isOpen = 1;
                     Invoke("ToggleIsOpen", 2);
