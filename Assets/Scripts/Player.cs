@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -8,13 +10,18 @@ public class Player : MonoBehaviour {
     private bool m_isAlive;
     private bool m_canRegen;
     private int m_maxHealth;
+    [SerializeField]
+    private GameObject PlayerDeathUI;
 
     private void Awake()
     {
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
         m_health = 100;
         m_isAlive = true;
         m_canRegen = true;
         m_maxHealth = 100;
+        PlayerDeathUI.SetActive(false);
     }
 
     public void TakeDamage(int damage)
@@ -34,9 +41,22 @@ public class Player : MonoBehaviour {
 
     private void Death()
     {
-        //Destroy(this);
-
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0.04f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        PlayerDeathUI.SetActive(true);
         m_isAlive = false;
+        Cursor.visible = true;
+        transform.GetChild(0).GetComponent<SmoothCameraLook>().enabled = false;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1.0f;
+        PlayerDeathUI.SetActive(false);
+        m_isAlive = true;
+        Cursor.visible = false;
     }
 
     private IEnumerator RegenHealthRoutine()
