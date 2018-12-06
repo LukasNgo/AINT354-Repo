@@ -65,6 +65,7 @@ public class MenuManager : MonoBehaviour
         float interval = 5.0f;
         value = Mathf.Round(value / interval) * interval;
 
+        m_volumeSlider.value = value;
         m_audioMixer.SetFloat("volume", value);
     }
 
