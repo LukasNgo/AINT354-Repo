@@ -239,7 +239,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 230393713}
         m_MethodName: SetFullscreen
         m_Mode: 0
         m_Arguments:
@@ -385,6 +385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pauseCanvas: {fileID: 723193123}
+  m_audioMixer: {fileID: 24100000, guid: a334edfb0176cfc4f8fffc81be175b8d, type: 2}
+  m_volumeSlider: {fileID: 642262187}
 --- !u!1 &363513155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1159,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 230393713}
         m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
