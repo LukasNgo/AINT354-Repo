@@ -26,7 +26,7 @@ public class ToggleTorch : MonoBehaviour {
         {
             m_cooldown = true;
 
-            Debug.Log("torch state: " + m_light.enabled);
+            //Debug.Log("torch state: " + m_light.enabled);
             if (m_light.enabled == true)
             {
                 m_light.enabled = false;
