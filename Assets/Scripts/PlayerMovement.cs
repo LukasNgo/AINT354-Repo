@@ -11,26 +11,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float m_runSpeed;
     [SerializeField] private float m_creepSpeed;
 
-    private Rigidbody m_rigidbody;
     private Vector3 m_inputs = Vector3.zero;
-
-    void Start ()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_rigidbody = GetComponent<Rigidbody>();
-	}
 	
 	void Update ()
     {
         m_inputs = Vector3.zero;
         m_inputs.x = Input.GetAxis("Horizontal");
-        m_inputs.z = Input.GetAxis("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleCursor();
-        }
+        m_inputs.z = Input.GetAxis("Vertical");       
 
         //test to follow player and attack. delete later.
         //if (Input.GetMouseButtonDown(0))
@@ -42,38 +29,31 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float m_speed = m_walkSpeed;
+            float m_speed = m_walkSpeed;
 
-        m_isRunning = Input.GetKey(KeyCode.LeftShift) && !m_isCreeping;
-        m_isCreeping = Input.GetKey(KeyCode.LeftControl) && !m_isRunning;
+            m_isRunning = Input.GetKey(KeyCode.LeftShift) && !m_isCreeping;
+            m_isCreeping = Input.GetKey(KeyCode.LeftControl) && !m_isRunning;
 
-        m_isWalking = !m_isRunning && !m_isCreeping;
+            m_isWalking = !m_isRunning && !m_isCreeping;
 
-        if (!m_isWalking && m_isRunning)
-        {
-            m_speed = m_runSpeed;
-        }
-        else if (!m_isWalking && m_isCreeping)
-        {
-            m_speed = m_creepSpeed;
-        }
-        else
-        {
-            m_speed = m_walkSpeed;
-        }
+            if (!m_isWalking && m_isRunning)
+            {
+                m_speed = m_runSpeed;
+            }
+            else if (!m_isWalking && m_isCreeping)
+            {
+                m_speed = m_creepSpeed;
+            }
+            else
+            {
+                m_speed = m_walkSpeed;
+            }
 
-        m_inputs.x *= Time.deltaTime;
-        m_inputs.z *= Time.deltaTime;
+            m_inputs.x *= Time.deltaTime;
+            m_inputs.z *= Time.deltaTime;
 
-        transform.Translate(m_inputs.x * m_speed, 0, m_inputs.z * m_speed);
-
-    }
-
-    private void ToggleCursor()
-    {
-        Cursor.lockState = (Cursor.lockState == CursorLockMode.None) ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = (Cursor.visible == false) ? true : false; 
-    }
+            transform.Translate(m_inputs.x * m_speed, 0, m_inputs.z * m_speed);
+    }   
 
     public bool isPlayerRunning()
     {

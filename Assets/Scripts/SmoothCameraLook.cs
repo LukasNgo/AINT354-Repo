@@ -18,16 +18,19 @@ public class SmoothCameraLook : MonoBehaviour
 	
 	void Update ()
     {
-        Vector2 deltaMouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        if (Cursor.visible == false)
+        {
+            Vector2 deltaMouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        deltaMouse = Vector2.Scale(deltaMouse, new Vector2(m_sensitivity * m_smoothing, m_sensitivity * m_smoothing));
-        m_smoothV.x = Mathf.Lerp(m_smoothV.x, deltaMouse.x, 1f / m_smoothing);
-        m_smoothV.y = Mathf.Lerp(m_smoothV.y, deltaMouse.y, 1f / m_smoothing);
-        m_mouselook += m_smoothV;
+            deltaMouse = Vector2.Scale(deltaMouse, new Vector2(m_sensitivity * m_smoothing, m_sensitivity * m_smoothing));
+            m_smoothV.x = Mathf.Lerp(m_smoothV.x, deltaMouse.x, 1f / m_smoothing);
+            m_smoothV.y = Mathf.Lerp(m_smoothV.y, deltaMouse.y, 1f / m_smoothing);
+            m_mouselook += m_smoothV;
 
-        m_mouselook.y = Mathf.Clamp(m_mouselook.y, -90f, 90f); // Lock vertical rotation to 180°
+            m_mouselook.y = Mathf.Clamp(m_mouselook.y, -90f, 90f); // Lock vertical rotation to 180°
 
-        transform.localRotation = Quaternion.AngleAxis(-m_mouselook.y, Vector3.right);
-        m_player.transform.localRotation = Quaternion.AngleAxis(m_mouselook.x, m_player.transform.up);
+            transform.localRotation = Quaternion.AngleAxis(-m_mouselook.y, Vector3.right);
+            m_player.transform.localRotation = Quaternion.AngleAxis(m_mouselook.x, m_player.transform.up);
+        }        
 	}
 }
