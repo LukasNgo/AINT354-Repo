@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -52,6 +53,11 @@ public class MenuManager : MonoBehaviour
     {
         m_camera.SetBool("Animate", true);
     }    
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("Main");
+    }
 
     public void QuitApplication()
     {
