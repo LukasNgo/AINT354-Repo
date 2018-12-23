@@ -9,6 +9,9 @@ TagManager:
   - Object
   - Chosen
   - Torch
+  - coolDownTimer
+  - coolDownTimerText
+  - slider
   layers:
   - Default
   - TransparentFX

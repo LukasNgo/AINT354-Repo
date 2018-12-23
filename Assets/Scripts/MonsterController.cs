@@ -44,12 +44,13 @@ public class MonsterController : MonoBehaviour {
         //Debug.Log("monster position " + _agent.transform.position);
         //Debug.Log("player position " + _player.position);
 
-        detectPlayer();
+        //detectPlayer();
 
         _timer += Time.deltaTime;
 
         if (_transparencyBool)
         {
+            echolocation.isEcholocationActive = true;
             if (Shader.GetGlobalFloat("_Transparency") < 1)
             {
                 Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 1, Time.deltaTime * 4)));
@@ -69,9 +70,22 @@ public class MonsterController : MonoBehaviour {
                     Shader.SetGlobalFloat("_TransparencyMaterial", 1);
                 }
             }
+
+            // fade in monster
+
+            if (Shader.GetGlobalFloat("_dissolveamount") < 1)
+            {
+                Shader.SetGlobalFloat("_dissolveamount", (Mathf.Lerp(Shader.GetGlobalFloat("_dissolveamount"), 1, Time.deltaTime * 4)));
+
+                if (Shader.GetGlobalFloat("_dissolveamount") > 0.9)
+                {
+                    Shader.SetGlobalFloat("_dissolveamount", 1);
+                }
+            }
         }
         else
         {
+            echolocation.isEcholocationActive = false;
             if (Shader.GetGlobalFloat("_Transparency") > 0)
             {
                 Shader.SetGlobalFloat("_Transparency", (Mathf.Lerp(Shader.GetGlobalFloat("_Transparency"), 0, Time.deltaTime * 2)));
@@ -89,6 +103,17 @@ public class MonsterController : MonoBehaviour {
                 if (Shader.GetGlobalFloat("_TransparencyMaterial") < 0.02)
                 {
                     Shader.SetGlobalFloat("_TransparencyMaterial", 0);
+                }
+            }
+            
+            // fade out monster
+            if (Shader.GetGlobalFloat("_dissolveamount") > 0)
+            {
+                Shader.SetGlobalFloat("_dissolveamount", (Mathf.Lerp(Shader.GetGlobalFloat("_dissolveamount"), 0, Time.deltaTime * 2)));
+
+                if (Shader.GetGlobalFloat("_dissolveamount") > 0.02)
+                {
+                    Shader.SetGlobalFloat("_dissolveamount", 0);
                 }
             }
         }
@@ -168,7 +193,7 @@ public class MonsterController : MonoBehaviour {
     //detect range from player to trigger echolocation
     private void detectPlayer()
     {
-        
+        /*
         if (Physics.Raycast(transform.position, (_player.position - transform.position), out _raycastHit, detectionRange))
         {
             if (_raycastHit.transform == _player || Vector3.Distance(transform.position, _player.position) < 10f)
@@ -188,7 +213,8 @@ public class MonsterController : MonoBehaviour {
                     _transparencyBool = false;
                 }
             }
-        }      
+        }     
+        */
     }
 
     //Use this from other gameobject to set the destination to it: GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
@@ -199,4 +225,8 @@ public class MonsterController : MonoBehaviour {
         _agent.SetDestination(tempDestination.position);
     }
 
+    public void setTransparencyBool(bool newbool)
+    {
+        _transparencyBool = newbool;
+    }
 }
