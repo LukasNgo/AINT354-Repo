@@ -82,7 +82,7 @@ public class GoalScript : MonoBehaviour
                 if (m_keyInventory.GetKeyCount() >= 8)
                 {
                     //m_door.constraints = RigidbodyConstraints.None;
-                    m_keyInventory.RemoveKeys(5);
+                    m_keyInventory.RemoveKeys(8);
                     m_isOpen = 1;
                     Invoke("ToggleIsOpen", 2);
                 }

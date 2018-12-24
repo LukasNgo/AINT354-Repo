@@ -18,6 +18,8 @@ public class MenuManager : MonoBehaviour
     // Find all resolutions and populate the Resolution Dropdown with the values cast as strings
     void Start()
     {
+        Time.timeScale = 1;
+
         m_resolutions = Screen.resolutions;
 
         m_resolutionDropdown.ClearOptions();

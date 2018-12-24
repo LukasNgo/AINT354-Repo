@@ -122,6 +122,7 @@ public class MonsterController : MonoBehaviour {
         if (isFollowing == false && isTimeOut == false)
         {
             _agent.speed = 1.5f;
+            Debug.Log("Walking!");
             GetComponent<Animator>().SetTrigger("MonsterWalk");
         }
 
@@ -129,6 +130,7 @@ public class MonsterController : MonoBehaviour {
         if (isFollowing == true && isTimeOut == false)
         {
             _agent.speed = 3.5f;
+            Debug.Log("Running!");
             GetComponent<Animator>().SetTrigger("MonsterRun");
         }
 
@@ -145,6 +147,8 @@ public class MonsterController : MonoBehaviour {
         {
             
             _agent.SetDestination(_player.position);
+            isFollowing = true;
+
             if (!isTimeOut)
             {
                 
