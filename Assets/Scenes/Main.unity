@@ -158,6 +158,11 @@ Prefab:
       propertyPath: _player
       value: 
       objectReference: {fileID: 572867554}
+    - target: {fileID: 114355228183206366, guid: 5bcbf31ded2e353449622ec74f8954da,
+        type: 2}
+      propertyPath: damageDeal
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bcbf31ded2e353449622ec74f8954da, type: 2}
   m_IsPrefabAsset: 0
@@ -372,33 +377,33 @@ MonoBehaviour:
   sounds:
   - name: AmbienceNormal
     clip: {fileID: 8300000, guid: 6bf0ba07bd2b98e4090c92b03323c840, type: 3}
-    volume: 0.7
+    volume: 0.2
     spatialBlend: 0
     loop: 1
     source: {fileID: 0}
   - name: AmbienceChase
     clip: {fileID: 8300000, guid: 09e80ff5fcc8a7d4d8e38f4037ee7d21, type: 3}
-    volume: 0.7
+    volume: 0.2
     spatialBlend: 0
     loop: 1
     source: {fileID: 0}
   - name: DoorUnlock
     clip: {fileID: 8300000, guid: e5b99cfaeaa0042438aecfb5fe156b33, type: 3}
     volume: 1
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 0
     source: {fileID: 0}
   - name: Key
     clip: {fileID: 8300000, guid: 9b86242ad37b7e84f89905bc5072fc2b, type: 3}
     volume: 1
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 0
     source: {fileID: 0}
   - name: Breathing
     clip: {fileID: 8300000, guid: c0776776aad737c41a71a8d308e9db96, type: 3}
     volume: 1
     spatialBlend: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: CatchBreath
     clip: {fileID: 8300000, guid: 3308c99661f382943b037c6d67566fa8, type: 3}
@@ -408,15 +413,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: HeartBeatFast
     clip: {fileID: 8300000, guid: 4de766654709cc94c9d5430225560590, type: 3}
-    volume: 1
+    volume: 0.6
     spatialBlend: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: HeartBeatNormal
     clip: {fileID: 8300000, guid: f27feb89a2ce449419c8c37781b27578, type: 3}
-    volume: 1
+    volume: 0.7
     spatialBlend: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: HoldBreath
     clip: {fileID: 8300000, guid: 88bb6ba5ce8094d48bfa8a48dcfb537f, type: 3}
@@ -428,13 +433,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c6c8e419eaa30a34282b3924bed869b2, type: 3}
     volume: 1
     spatialBlend: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: PlayerFootstepsLow
     clip: {fileID: 8300000, guid: 9470ae1e3c06e2e41959e0748247a1f3, type: 3}
     volume: 1
     spatialBlend: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Whisper1
     clip: {fileID: 8300000, guid: b73608c9e35cfeb459b0d6471779ff97, type: 3}
@@ -1984,6 +1989,106 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1495285596}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1610084073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010402951368, guid: 5bcbf31ded2e353449622ec74f8954da,
+    type: 2}
+  m_PrefabInternal: {fileID: 129197479}
+--- !u!82 &1610084080
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610084073}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9470ae1e3c06e2e41959e0748247a1f3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: -0.97
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 10
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1611593517
 GameObject:
   m_ObjectHideFlags: 0
