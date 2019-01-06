@@ -48,6 +48,7 @@ public class KeyPickup : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 m_keyInventory.AddKey();
+                FindObjectOfType<AudioManager>().Play("Key");
                 Destroy(this);
                 gameObject.GetComponent<Renderer>().enabled = false;
             }

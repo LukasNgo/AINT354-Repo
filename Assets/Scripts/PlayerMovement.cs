@@ -17,14 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_inputs = Vector3.zero;
         m_inputs.x = Input.GetAxis("Horizontal");
-        m_inputs.z = Input.GetAxis("Vertical");       
-
-        //test to follow player and attack. delete later.
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
-        //}
-        //Debug.Log("current health " + GetComponent<Player>().GetHealth());
+        m_inputs.z = Input.GetAxis("Vertical");
     }
 
     void FixedUpdate()

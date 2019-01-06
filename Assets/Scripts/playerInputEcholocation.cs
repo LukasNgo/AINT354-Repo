@@ -63,7 +63,7 @@ public class playerInputEcholocation : MonoBehaviour {
         // if no cooldown
         if (!isRunningCooldown)
         {
-            Debug.Log("Can now use 'focus'");
+            //Debug.Log("Can now use 'focus'");
             // fade in shaders
             m_monsterController_script.setTransparencyBool(echolocation);
         }
@@ -72,7 +72,7 @@ public class playerInputEcholocation : MonoBehaviour {
         {
             if (!isRunningCooldown)
             {
-                Debug.Log("'focus' on cooldown for 10 seconds");
+                //Debug.Log("'focus' on cooldown for 10 seconds");
                 StartCoroutine("cooldownTimer");
             }
         }
@@ -80,6 +80,8 @@ public class playerInputEcholocation : MonoBehaviour {
 
     private IEnumerator updateSlider()
     {
+        FindObjectOfType<AudioManager>().Play("HoldBreath");
+
         isRunningSlider = true;
 
         // turn on slider
@@ -101,6 +103,8 @@ public class playerInputEcholocation : MonoBehaviour {
 
     private IEnumerator cooldownTimer()
     {
+        FindObjectOfType<AudioManager>().Play("CatchBreath");
+
         isRunningCooldown = true;
 
         m_monsterController_script.setTransparencyBool(false);

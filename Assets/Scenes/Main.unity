@@ -151,7 +151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012531979720, guid: 5bcbf31ded2e353449622ec74f8954da, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114355228183206366, guid: 5bcbf31ded2e353449622ec74f8954da,
         type: 2}
@@ -206,7 +206,7 @@ Prefab:
     - target: {fileID: 224751656560746026, guid: 715fd1991a12a9344916b750109d3cac,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224751656560746026, guid: 715fd1991a12a9344916b750109d3cac,
         type: 2}
@@ -342,6 +342,125 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.374284, y: 3.3875284, z: 0.17959881}
   m_Center: {x: -0.052332282, y: 1.1937642, z: 0.029736042}
+--- !u!1 &374625646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 374625648}
+  - component: {fileID: 374625647}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &374625647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 374625646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8695a5253409d74f9e759c2a0af16a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: AmbienceNormal
+    clip: {fileID: 8300000, guid: 6bf0ba07bd2b98e4090c92b03323c840, type: 3}
+    volume: 0.7
+    spatialBlend: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: AmbienceChase
+    clip: {fileID: 8300000, guid: 09e80ff5fcc8a7d4d8e38f4037ee7d21, type: 3}
+    volume: 0.7
+    spatialBlend: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: DoorUnlock
+    clip: {fileID: 8300000, guid: e5b99cfaeaa0042438aecfb5fe156b33, type: 3}
+    volume: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Key
+    clip: {fileID: 8300000, guid: 9b86242ad37b7e84f89905bc5072fc2b, type: 3}
+    volume: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Breathing
+    clip: {fileID: 8300000, guid: c0776776aad737c41a71a8d308e9db96, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: CatchBreath
+    clip: {fileID: 8300000, guid: 3308c99661f382943b037c6d67566fa8, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: HeartBeatFast
+    clip: {fileID: 8300000, guid: 4de766654709cc94c9d5430225560590, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: HeartBeatNormal
+    clip: {fileID: 8300000, guid: f27feb89a2ce449419c8c37781b27578, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: HoldBreath
+    clip: {fileID: 8300000, guid: 88bb6ba5ce8094d48bfa8a48dcfb537f, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstepsHigh
+    clip: {fileID: 8300000, guid: c6c8e419eaa30a34282b3924bed869b2, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstepsLow
+    clip: {fileID: 8300000, guid: 9470ae1e3c06e2e41959e0748247a1f3, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Whisper1
+    clip: {fileID: 8300000, guid: b73608c9e35cfeb459b0d6471779ff97, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Whisper2
+    clip: {fileID: 8300000, guid: 7a653525189298c4aa4b33377ad9d8d7, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &374625648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 374625646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459564844
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +615,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4656958623083422, guid: 08274be8dcbc17448839132384619997, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1006598041769336, guid: 08274be8dcbc17448839132384619997, type: 2}
       propertyPath: m_TagString
@@ -752,7 +871,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4932221044297646, guid: 6ff321214359e1f4cbe537604fe5cc11, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ff321214359e1f4cbe537604fe5cc11, type: 2}
@@ -902,7 +1021,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &696103407
 GameObject:
@@ -943,7 +1062,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &718469100 stripped
 Transform:
@@ -1148,7 +1267,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1121208629
 Prefab:
@@ -1192,7 +1311,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4758748811609920, guid: ab3010d79fb745743b987b4d77cb2285, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114329546189540600, guid: ab3010d79fb745743b987b4d77cb2285,
         type: 2}
@@ -1270,7 +1389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4442125471409128, guid: 32084de7c3db6a74592a9a270a2a71ce, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114083708926119602, guid: 32084de7c3db6a74592a9a270a2a71ce,
         type: 2}
@@ -1757,7 +1876,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4317223767134824, guid: 328dc9afd621f6a47a381cc8d0754c25, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4317223767134824, guid: 328dc9afd621f6a47a381cc8d0754c25, type: 2}
       propertyPath: m_LocalScale.x

@@ -85,6 +85,7 @@ public class GoalScript : MonoBehaviour
                     m_keyInventory.RemoveKeys(8);
                     m_isOpen = 1;
                     Invoke("ToggleIsOpen", 2);
+                    FindObjectOfType<AudioManager>().Play("DoorUnlock");
                 }
                 else
                 {

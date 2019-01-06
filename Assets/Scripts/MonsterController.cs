@@ -9,8 +9,8 @@ public class MonsterController : MonoBehaviour {
     private float wanderRadius = 1000;
     [SerializeField]
     private float wanderTimer = 10;
-    [SerializeField]
-    private float detectionRange = 200;
+    //[SerializeField]
+    //private float detectionRange = 200;
     [SerializeField]
     private int damageDeal = 50;
     [SerializeField]
@@ -30,6 +30,8 @@ public class MonsterController : MonoBehaviour {
     public bool isFollowing = false;
 
     private bool _transparencyBool = false;
+    //private bool isSoundPlaying1;
+    //private bool isSoundPlaying2;
 
     void OnEnable()
     {
@@ -37,16 +39,31 @@ public class MonsterController : MonoBehaviour {
         _timer = wanderTimer;
     }
 
+    //private void Start()
+    //{
+    //    FindObjectOfType<AudioManager>().Play("AmbienceNormal");
+    //    FindObjectOfType<AudioManager>().Play("AmbienceChase");
+    //}
+
     void Update()
     {
-
-        //Debug.Log("monster destination " + _agent.destination);
-        //Debug.Log("monster position " + _agent.transform.position);
-        //Debug.Log("player position " + _player.position);
-
-        //detectPlayer();
-
         _timer += Time.deltaTime;
+
+        ////ambience sound
+        //if (isFollowing && !isSoundPlaying1)
+        //{
+        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceNormal", Mathf.Lerp(0.7f, 0, Time.deltaTime *4));
+        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceChase", Mathf.Lerp(0, 0.7f, Time.deltaTime * 4));
+        //    isSoundPlaying1 = true;
+        //    isSoundPlaying2 = false;
+        //}
+        //if (!isFollowing && !isSoundPlaying2)
+        //{
+        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceNormal", Mathf.Lerp(0, 0.7f, Time.deltaTime * 4));
+        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceChase", Mathf.Lerp(0.7f, 0, Time.deltaTime * 4));
+        //    isSoundPlaying2 = true;
+        //    isSoundPlaying1 = false;
+        //}
 
         if (_transparencyBool)
         {
@@ -122,7 +139,7 @@ public class MonsterController : MonoBehaviour {
         if (isFollowing == false && isTimeOut == false)
         {
             _agent.speed = 1.5f;
-            Debug.Log("Walking!");
+            //Debug.Log("Walking!");
             GetComponent<Animator>().SetTrigger("MonsterWalk");
         }
 
@@ -130,7 +147,7 @@ public class MonsterController : MonoBehaviour {
         if (isFollowing == true && isTimeOut == false)
         {
             _agent.speed = 3.5f;
-            Debug.Log("Running!");
+            //Debug.Log("Running!");
             GetComponent<Animator>().SetTrigger("MonsterRun");
         }
 
