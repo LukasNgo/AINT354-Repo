@@ -33,6 +33,8 @@ public class MonsterController : MonoBehaviour {
     //private bool isSoundPlaying1;
     //private bool isSoundPlaying2;
 
+    public CameraShake cameraShake;
+
     void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -193,6 +195,7 @@ public class MonsterController : MonoBehaviour {
     private IEnumerator AttackPlayer(float time)
     {
         _player.GetComponent<Player>().TakeDamage(damageDeal);
+        StartCoroutine(cameraShake.Shake(.15f, .4f));
         yield return new WaitForSeconds(time);
         isTimeOut = false;
     }
