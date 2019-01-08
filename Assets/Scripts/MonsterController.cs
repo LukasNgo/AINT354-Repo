@@ -34,6 +34,7 @@ public class MonsterController : MonoBehaviour {
     //private bool isSoundPlaying2;
 
     private bool isBeingAttackedFade = false;
+    private bool isMonsterSoundPlaying = false;
 
     public CameraShake cameraShake;
 
@@ -250,11 +251,22 @@ public class MonsterController : MonoBehaviour {
         isFollowing = true;
         tempDestination = newDest;
         _agent.SetDestination(tempDestination.position);
-        FindObjectOfType<AudioManager>().PlayOneShot("Monster");
+        if (!isMonsterSoundPlaying)
+        {
+            StartCoroutine(MonsterSound());
+        }
     }
 
     public void setTransparencyBool(bool newbool)
     {
         _transparencyBool = newbool;
+    }
+
+    private IEnumerator MonsterSound()
+    {
+        FindObjectOfType<AudioManager>().PlayOneShot("Monster");
+        isMonsterSoundPlaying = true;
+        yield return new WaitForSeconds(7);
+        isMonsterSoundPlaying = false;
     }
 }
