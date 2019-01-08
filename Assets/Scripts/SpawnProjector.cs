@@ -24,6 +24,13 @@ public class SpawnProjector : MonoBehaviour {
                 Vector3 pos = contact.point;
                 objectPooler.SpawnFromPool("BLUE", pos, rot);
             }
+
+
+            if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
+            {
+                FindObjectOfType<AudioManager>().PlayOneShot("Chair");
+            }
         }
+
     }
 }

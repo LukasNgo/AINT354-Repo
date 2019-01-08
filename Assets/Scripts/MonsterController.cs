@@ -43,12 +43,6 @@ public class MonsterController : MonoBehaviour {
         _timer = wanderTimer;
     }
 
-    //private void Start()
-    //{
-    //    FindObjectOfType<AudioManager>().Play("AmbienceNormal");
-    //    FindObjectOfType<AudioManager>().Play("AmbienceChase");
-    //}
-
     void Update()
     {
         _timer += Time.deltaTime;
@@ -271,6 +265,7 @@ public class MonsterController : MonoBehaviour {
         isFollowing = true;
         tempDestination = newDest;
         _agent.SetDestination(tempDestination.position);
+        FindObjectOfType<AudioManager>().PlayOneShot("Monster");
     }
 
     public void setTransparencyBool(bool newbool)

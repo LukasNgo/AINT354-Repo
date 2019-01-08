@@ -168,6 +168,21 @@ Prefab:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1877286072}
+    - target: {fileID: 114355228183206366, guid: 5bcbf31ded2e353449622ec74f8954da,
+        type: 2}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 1610084080}
+    - target: {fileID: 114355228183206366, guid: 5bcbf31ded2e353449622ec74f8954da,
+        type: 2}
+      propertyPath: monster
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ecadb6884daabc43a194b7361946354, type: 3}
+    - target: {fileID: 114355228183206366, guid: 5bcbf31ded2e353449622ec74f8954da,
+        type: 2}
+      propertyPath: footsteps
+      value: 
+      objectReference: {fileID: 8300000, guid: 9470ae1e3c06e2e41959e0748247a1f3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bcbf31ded2e353449622ec74f8954da, type: 2}
   m_IsPrefabAsset: 0
@@ -482,7 +497,7 @@ MonoBehaviour:
   - name: PlayerFootstepsHigh
     clip: {fileID: 8300000, guid: c6c8e419eaa30a34282b3924bed869b2, type: 3}
     volume: 1
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 1
     source: {fileID: 0}
   - name: PlayerFootstepsLow
@@ -501,6 +516,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7a653525189298c4aa4b33377ad9d8d7, type: 3}
     volume: 1
     spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Chair
+    clip: {fileID: 8300000, guid: a41dc7916d3eb28409a6e588dd988c3a, type: 3}
+    volume: 0.2
+    spatialBlend: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: Monster
+    clip: {fileID: 8300000, guid: 5ecadb6884daabc43a194b7361946354, type: 3}
+    volume: 0.8
+    spatialBlend: 0.5
     loop: 0
     source: {fileID: 0}
 --- !u!4 &374625648
