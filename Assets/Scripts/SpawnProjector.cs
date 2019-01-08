@@ -30,6 +30,11 @@ public class SpawnProjector : MonoBehaviour {
             {
                 FindObjectOfType<AudioManager>().PlayOneShot("Chair");
             }
+
+            if (collision.gameObject.tag == "Player")
+            {
+                GameObject.FindGameObjectWithTag("Enemy").GetComponent<MonsterController>().SetNewDestination(GetComponent<Transform>());
+            }
         }
 
     }
