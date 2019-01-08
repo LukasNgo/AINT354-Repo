@@ -401,7 +401,7 @@ MonoBehaviour:
   - name: Key
     clip: {fileID: 8300000, guid: 9b86242ad37b7e84f89905bc5072fc2b, type: 3}
     volume: 1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
     source: {fileID: 0}
   - name: Breathing
@@ -430,14 +430,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: HoldBreath
     clip: {fileID: 8300000, guid: 88bb6ba5ce8094d48bfa8a48dcfb537f, type: 3}
-    volume: 1
+    volume: 0.1
     spatialBlend: 0
     loop: 0
     source: {fileID: 0}
   - name: PlayerFootstepsHigh
     clip: {fileID: 8300000, guid: c6c8e419eaa30a34282b3924bed869b2, type: 3}
     volume: 1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 1
     source: {fileID: 0}
   - name: PlayerFootstepsLow
@@ -1081,7 +1081,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

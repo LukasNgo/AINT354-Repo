@@ -33,6 +33,8 @@ public class MonsterController : MonoBehaviour {
     //private bool isSoundPlaying1;
     //private bool isSoundPlaying2;
 
+    private bool isBeingAttackedFade = false;
+
     public CameraShake cameraShake;
 
     void OnEnable()
@@ -124,17 +126,20 @@ public class MonsterController : MonoBehaviour {
                     Shader.SetGlobalFloat("_TransparencyMaterial", 0);
                 }
             }
-            
-            // fade out monster
-            if (Shader.GetGlobalFloat("_dissolveamount") > 0)
-            {
-                Shader.SetGlobalFloat("_dissolveamount", (Mathf.Lerp(Shader.GetGlobalFloat("_dissolveamount"), 0, Time.deltaTime * 2)));
 
-                if (Shader.GetGlobalFloat("_dissolveamount") > 0.02)
+            // fade out monster
+            if (!isBeingAttackedFade)
+            {
+                if (Shader.GetGlobalFloat("_dissolveamount") > 0)
                 {
-                    Shader.SetGlobalFloat("_dissolveamount", 0);
+                    Shader.SetGlobalFloat("_dissolveamount", (Mathf.Lerp(Shader.GetGlobalFloat("_dissolveamount"), 0, Time.deltaTime * 2)));
+
+                    if (Shader.GetGlobalFloat("_dissolveamount") < 0.02)
+                    {
+                        Shader.SetGlobalFloat("_dissolveamount", 0);
+                    }
                 }
-            }
+            } 
         }
 
         //walking speed
@@ -164,7 +169,7 @@ public class MonsterController : MonoBehaviour {
         //if monster is very close to player, attack the player and follow until player is out of reach
         if (Vector3.Distance(transform.position, _player.position) < attackRange)
         {
-            
+            isBeingAttackedFade = true;
             _agent.SetDestination(_player.position);
             isFollowing = true;
 
@@ -178,6 +183,9 @@ public class MonsterController : MonoBehaviour {
                     StartCoroutine(AttackPlayer(2));
                 }
             }
+        } else
+        {
+            isBeingAttackedFade = false;
         }
 
         //check if monster has a destination and give it a new one if it doesn't
@@ -193,13 +201,29 @@ public class MonsterController : MonoBehaviour {
 
     //function to attack player, deal damage and wait x second between attacks
     private IEnumerator AttackPlayer(float time)
-    {
+    {        
+        StartCoroutine(cameraShake.Shake(.15f, .2f));
         _player.GetComponent<Player>().TakeDamage(damageDeal);
-        StartCoroutine(cameraShake.Shake(.15f, .4f));
+        StartCoroutine(fadeInMonster());
         yield return new WaitForSeconds(time);
         isTimeOut = false;
     }
 
+    private IEnumerator fadeInMonster()
+    {
+        isBeingAttackedFade = true;
+        float elapsedTime = 0;
+
+        while (elapsedTime < 0.7f)
+        {
+            elapsedTime += Time.deltaTime / 0.7f;
+            Shader.SetGlobalFloat("_dissolveamount", Mathf.Lerp(0, 0.7f, elapsedTime));
+            yield return null;
+        }
+
+        isBeingAttackedFade = false;
+
+    }
     //calculate random navmesh destination
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
