@@ -7,6 +7,9 @@ public class KeyInventory : MonoBehaviour
 {
     private List<int> m_keyList = new List<int>();
     [SerializeField] private GameObject m_keyUI;
+    [SerializeField] private GameObject m_keysToGo;
+
+
 
     private void Start()
     {
@@ -18,16 +21,15 @@ public class KeyInventory : MonoBehaviour
         KeyGUI();
 
         //test
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            AddKey();
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    AddKey();
+        //}
     }
 
     public void AddKey()
     {
         m_keyList.Add(1);
-        //Debug.Log("list value = " + m_keyList.Count);
     }
 
     public void RemoveKeys(int value)
@@ -35,9 +37,7 @@ public class KeyInventory : MonoBehaviour
         for (int i = 0; i < value; i++)
         {
             m_keyList.Remove(1);
-        }
-        
-        //Debug.Log("list value = " + m_keyList.Count);
+        }        
     }
 
     public int GetKeyCount()
@@ -47,7 +47,6 @@ public class KeyInventory : MonoBehaviour
 
     public void KeyGUI()
     {
-
         if (m_keyList.Count > 0)
         {
             m_keyUI.SetActive(true);
@@ -56,7 +55,7 @@ public class KeyInventory : MonoBehaviour
         {
             m_keyUI.SetActive(false);
         }
-        m_keyUI.GetComponentInChildren<Text>().text = ("Keys: " + m_keyList.Count);       
+        m_keyUI.GetComponentInChildren<Text>().text = ("Keys: " + m_keyList.Count);
     }
 
 }

@@ -6,6 +6,7 @@ public class GoalScript : MonoBehaviour
 {
     private KeyInventory m_keyInventory;
 
+    private int m_keysToGet = 7;
     private bool m_hasCollided = false;
     private bool m_notEnoughKeys = false;
     private int m_isOpen = 0; // 0 Locked, 1 Unlocked (for "Door Unlocked!" prompt), 2 Uninteractable
@@ -50,11 +51,11 @@ public class GoalScript : MonoBehaviour
         {
             if (m_keyInventory.GetKeyCount() == 1)
             {
-                m_text = ("You have " + m_keyInventory.GetKeyCount() + " key out of 8");
+                m_text = ("You have " + m_keyInventory.GetKeyCount() + " key out of " + m_keysToGet);
             }
             else
             {
-                m_text = ("You have " + m_keyInventory.GetKeyCount() + " keys out of 8");
+                m_text = ("You have " + m_keyInventory.GetKeyCount() + " keys out of " + m_keysToGet);
             }
             
             GUI.Box(new Rect((Screen.width - 250) / 2, (Screen.height + 80) / 2, 250, 50), m_text);
@@ -79,10 +80,10 @@ public class GoalScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (m_keyInventory.GetKeyCount() >= 8)
+                if (m_keyInventory.GetKeyCount() >= m_keysToGet)
                 {
                     //m_door.constraints = RigidbodyConstraints.None;
-                    m_keyInventory.RemoveKeys(8);
+                    m_keyInventory.RemoveKeys(m_keysToGet);
                     m_isOpen = 1;
                     Invoke("ToggleIsOpen", 2);
                     FindObjectOfType<AudioManager>().Play("DoorUnlock");

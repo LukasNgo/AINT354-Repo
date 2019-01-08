@@ -17,8 +17,8 @@ public class KeySpawn : MonoBehaviour
             m_keySpawns.Add(this.gameObject.transform.GetChild(i));
         }
 
-        //RandomlySelect(8);
-        SelectAll();
+        RandomlySelect(10);
+        //SelectAll();
 
         Spawn();
 	}
