@@ -47,22 +47,6 @@ public class MonsterController : MonoBehaviour {
     {
         _timer += Time.deltaTime;
 
-        ////ambience sound
-        //if (isFollowing && !isSoundPlaying1)
-        //{
-        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceNormal", Mathf.Lerp(0.7f, 0, Time.deltaTime *4));
-        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceChase", Mathf.Lerp(0, 0.7f, Time.deltaTime * 4));
-        //    isSoundPlaying1 = true;
-        //    isSoundPlaying2 = false;
-        //}
-        //if (!isFollowing && !isSoundPlaying2)
-        //{
-        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceNormal", Mathf.Lerp(0, 0.7f, Time.deltaTime * 4));
-        //    FindObjectOfType<AudioManager>().SetVolume("AmbienceChase", Mathf.Lerp(0.7f, 0, Time.deltaTime * 4));
-        //    isSoundPlaying2 = true;
-        //    isSoundPlaying1 = false;
-        //}
-
         if (_transparencyBool)
         {
             echolocation.isEcholocationActive = true;
@@ -198,6 +182,7 @@ public class MonsterController : MonoBehaviour {
     {        
         StartCoroutine(cameraShake.Shake(.15f, .2f));
         _player.GetComponent<Player>().TakeDamage(damageDeal);
+        FindObjectOfType<AudioManager>().Play("MonsterHit");
         StartCoroutine(fadeInMonster());
         yield return new WaitForSeconds(time);
         isTimeOut = false;

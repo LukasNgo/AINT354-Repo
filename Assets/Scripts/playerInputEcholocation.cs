@@ -110,14 +110,14 @@ public class playerInputEcholocation : MonoBehaviour {
         m_monsterController_script.setTransparencyBool(false);
 
         // initial start and enable timer
-        cooldownTimerforUI = 10;
+        cooldownTimerforUI = 5;
         coolDownTimerRend.enabled = true;
         timeText.enabled = true;
 
         // disable slider
         sliderObject.SetActive(false);
 
-        for (float time = 10; time > 0; time -= Time.deltaTime)
+        for (float time = 5; time > 0; time -= Time.deltaTime)
         {
             cooldownTimerforUI = Mathf.RoundToInt(time);
             // update timer
